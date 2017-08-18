@@ -45,6 +45,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//设置上传目录
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 
 //加载route
 var routes = require('./route');

@@ -20,7 +20,7 @@ gulp.watch('src/**/*.js', function(event) {
     }
 });
 
-gulp.watch('src/**/*.less', function(event) {
+gulp.watch('src/**/*.{less,css}', function(event) {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     if (event.type == 'changed') {
         gulp.src(event.path)
