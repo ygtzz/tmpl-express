@@ -6,9 +6,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var compression = require('compression');
 
 var app = express();
 
+//use gzip
+app.use(compression({
+  threshold: 512
+}));
+//启用CORS
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://localhost:7000'],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//加载route
 var routes = require('./route');
 routes.forEach(item => {
   app.use(item.name,require(item.path));
@@ -33,13 +45,8 @@ fs.readdirSync(routePath)
     var name = path.basename(file,'.js');
     app.use('/'+name,require('./routes/' + name))
   });
-
-//启用CORS
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://localhost:7000'],
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  credentials: true
-}));
+//load auth
+app.use('/api',require('./auth'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
