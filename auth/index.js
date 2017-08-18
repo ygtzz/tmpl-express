@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var tokenSecret = require('./config').tokenSecret;
+var tokenSecret = appRequire('config').tokenSecret;
 
 var excludes = [
     '/api/users/login'

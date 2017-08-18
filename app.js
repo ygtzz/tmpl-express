@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var compression = require('compression');
 var env = process.env.NODE_ENV || 'development';
+require('./app-bootstrap');
 
 var app = express();
 

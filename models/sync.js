@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var models = require("./models");
+var models = require("./index");
 
 //初始化mysql
 models.sequelize.sync({
