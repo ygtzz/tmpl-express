@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 var app = express();
 
@@ -32,6 +33,13 @@ fs.readdirSync(routePath)
     var name = path.basename(file,'.js');
     app.use('/'+name,require('./routes/' + name))
   });
+
+//启用CORS
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://localhost:7000'],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
