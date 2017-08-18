@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var winston = require('winston');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -22,6 +23,18 @@ app.use(cors({
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true
 }));
+// Use winston on production
+var log = 'dev';
+if (env !== 'development') {
+  log = {
+    stream: {
+      write: message => winston.info(message)
+    }
+  };
+}
+// Don't log during tests
+// Logging middleware
+if (env !== 'test') app.use(morgan(log));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
