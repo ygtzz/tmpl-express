@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var compression = require('compression');
+var env = process.env.NODE_ENV || 'development';
 
 var app = express();
 
