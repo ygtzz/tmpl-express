@@ -9,7 +9,7 @@ router.get('/list', function(req, res, next) {
 });
 
 router.get('/models', function(req, res, next) {
-    var list = [{name:'zhangsan',age:11},{name:'lisi',age:33}];
+    var list = [{name:'model1',age:11},{name:'model2',age:33}];
     res.json({
         data:list
     });
