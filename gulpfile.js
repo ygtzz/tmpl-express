@@ -14,7 +14,7 @@ var base = './app';
 gulp.task('default',['dev:watch','dev:nodemon']);
 gulp.task('build',function (cb) {
     runSequence('build:clean_build', 'build:usemin','build:move_app','build:clean_app',
-    ['build:movejs','build:movecss','build:moveviews'],['build:cleanjs','build:cleancss','build:cleanviews'],cb);
+    ['build:movejs','build:movecss','build:moveviews'],'build:clean',cb);
 });
 
 gulp.task('dev:nodemon', function() {
@@ -43,7 +43,7 @@ gulp.task('dev:watch', function() {
         }
     });
 
-    gulp.watch('src/**/*.js', function(event) {
+    gulp.watch('src/!(route)/*.js', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         if (event.type == 'changed') {
             gulp.src(event.path)
@@ -57,6 +57,15 @@ gulp.task('dev:watch', function() {
             gulp.src(event.path)
                 .pipe(less())
                 .pipe(gulp.dest(base + '/public/css'));
+        }
+    });
+
+    gulp.watch('src/route/*.js', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        if (event.type == 'changed') {
+            gulp.src(event.path)
+                .pipe(less())
+                .pipe(gulp.dest(base + '/routes'));
         }
     });
 });
@@ -96,14 +105,6 @@ gulp.task('build:moveviews',function(){
     return gulp.src('./build/*.ejs').pipe(gulp.dest('build/views'));
 });
 
-gulp.task('build:cleanjs',function(){
-    return gulp.src('./build/js').pipe(clean());
-});
-
-gulp.task('build:cleancss',function(){
-    return gulp.src('./build/css').pipe(clean());
-});
-
-gulp.task('build:cleanviews',function(){
-    return gulp.src('./build/*.ejs').pipe(clean());
+gulp.task('build:clean',function(){
+    return gulp.src(['./build/+(css|js)','./build/*.ejs']).pipe(clean());
 });
