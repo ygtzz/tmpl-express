@@ -1,0 +1,262 @@
+/*! 
+* reset.css 
+*/
+body{
+    font-family:arial;
+    font-size: 12px;
+}
+input,textarea,select{
+    font-size:100%;    
+    font-family:inherit;
+}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,form{
+    margin:0;
+}
+h4,h5,h6{
+    font-size:1em;
+}
+ul,ol{
+    padding-left:0; 
+    list-style-type:none;
+}
+img{border:0;}
+/*清除外轮廓*/
+:active,:focus{outline:0;}
+/*bootstrap清除按钮outline*/
+.btn.active.focus, .btn.active:focus,.btn.focus, .btn:active.focus,.btn:active:focus, .btn:focus {
+    outline:0;
+}
+a:link, a:visited, a:hover, a:active {
+    color: #ff510d;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+/*!
+* by zhangxinxu(.com) 2014
+* https://github.com/zhangxinxu/quickLayout
+* under MIT license
+*/
+
+/* 
+ * buttons
+*/
+.btn{
+    display:inline-block;
+    padding:.2em 1em;
+    font-size:1em;
+    font-weight:normal;
+    line-height:1.5;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    -ms-touch-action:manipulation;
+    touch-action:manipulation;
+    cursor:pointer;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    border:1px solid #bfcbd9;
+    background-color:#fff;
+    color: #1f2d3d;   
+    border-radius:.25em;
+}
+.btn:focus,.btn:active:focus{outline:0} 
+.btn:focus,.btn:hover{text-decoration:none}
+.btn:hover{color:#fff;background-color:#20a0ff;border-color:#20a0ff;
+    box-shadow: 0px 1px 0px rgba(0,0,0,.2), 2px 3px 8px rgba(0, 0, 0,.4);
+}
+.btn:active{box-shadow:none;background-image:none;outline:0;}
+.btn:disabled{cursor:not-allowed;opacity:.65} 
+.btn-primary {
+    background-color:#fff;
+    color: #ff510d;
+    border: 1px solid #ff510d;
+    text-align:center;    
+}
+.btn-primary:hover {
+    color: #fff;
+	background-color: #ff510d;
+	border-color:#ff510d;
+}
+.btn-link{
+    font-size: 12px;
+    padding: 7px 9px;
+    cursor: pointer;
+}
+a.btn-link:link,a.btn-link:visited,a.btn-link:hover,a.btn-link:active{
+    color:#26ABFF;
+    text-decoration: none;
+}
+/* display */
+.dn { display: none; }
+.di { display: inline; }
+.db { display: block; }
+.dib { display: inline-block; } /* if the element is block level(eg. div, li), using 'inline-any' instead */
+/* safe color */
+.g0 { color: #000; }
+.g3 { color: #333; }
+.g6 { color: #666; }
+.g9 { color: #999; }
+.gc { color: #ccc; }
+/* text-align */
+.tc { text-align: center; }
+.tr { text-align: right; }
+.tl { text-align: left; }
+.tj { text-align: justify; }
+/* text-decoration */
+.tdl { text-decoration: underline; }
+.tdn, .tdn:hover, .tdn a:hover, a.tdl:hover { text-decoration: none; }
+/* white-space */
+.nowrap { white-space: nowrap; }
+/* word-wrap */
+.bk { word-wrap: break-word; }
+/* vertical-align */
+.vm { vertical-align: middle; }
+.vtb { vertical-align: text-bottom; }
+.vb { vertical-align: bottom; }
+.vt { vertical-align: top; }
+.vn { vertical-align: -2px; }
+/* float */
+.l { float: left; }
+.r { float: right; }
+/* clear */
+.cl { clear: both; }
+/* position */
+.rel { position: relative; }
+.abs { position: absolute; }
+/* cursor */
+.poi { cursor: pointer; }
+.def { cursor: default; }
+/* overflow */
+.ovh { overflow: hidden; }
+.ova { overflow: auto; }
+/* visibility */
+.vh { visibility: hidden; }
+.vv { visibility: visible; }
+
+/* ------------------- multiply CSS ------------------ */
+/* 块状元素水平居中 */
+.auto { margin-left: auto; margin-right: auto; }
+/* 清除浮 动*/
+.fix { *zoom: 1; }
+.fix:after { display: table; content: ''; clear: both; }
+/* 基于display: table-cell的自适应布局 */
+.cell { display: table-cell; *display: inline-block; width: 2000px; *width: auto; }
+/* 双栏自适应cell部分连续英文字符换行 */
+.cell-bk { display: table; width: 100%; table-layout: fixed; word-wrap: break-word; }
+/* 单行文字溢出虚点显 示*/
+.ell { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+/* 大小不定元素垂直居中 */
+.dib-vm { display: inline-block; width: 0; height: 100%; vertical-align: middle; }
+/* 无框文本框文本域 */
+.bd-none { border: 0; outline: none; }
+/* 绝对定位隐藏 */
+.abs-out { position: absolute; left: -999em; top: -999em; }
+.abs-clip { position: absolute; clip: rect(0 0 0 0); }
+/*inline-block与float等宽列表*/
+.inline-box { font-size: 1em; letter-spacing: -.25em; font-family: Arial; }
+.inline-two, .inline-three, .inline-four, .inline-five, .inline-six, .inline-any { display: inline-block; *display: inline; letter-spacing: 0; vertical-align: top; *zoom: 1; }
+.float-two, .float-three, .float-four, .float-five, .float-six { float: left; }
+.inline-two, .float-two { width: 49.9%; }
+.inline-three, .float-three { width: 33.3%; }
+.inline-four, .float-four { width: 24.9%; }
+.inline-five, .float-five { width: 19.9%; }
+.inline-six, .float-six { width: 16.6%; }
+.inline-fix { display: inline-block; width: 100%; height: 0; overflow: hidden; }
+
+/*! 
+* custom.css 
+*/
+/* bootstrap input style */
+.input {
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+
+.input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+/* bootstrap table style */
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+.table .table {
+    background-color: #fff;
+}
+
+.table-condensed th,
+.table-condensed td {
+    padding: 5px;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #ddd;
+}
+
+.table-striped tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-hover tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* table simple style */
+.tb {
+    border-collapse: collapse;
+}
+
+.tb td {
+    padding: 5px 10px;
+    border: 1px solid #328AA4;
+    word-break: break-all;
+}
+
+.tb th {
+    padding: 5px 10px;
+    border: 1px solid #328AA4;
+    background: #328AA4;
+    color: #fff;
+}
