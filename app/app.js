@@ -62,7 +62,7 @@ fs.readdirSync(routePath)
     app.use('/'+name,require('./routes/' + name))
   });
 //load auth
-app.use('/api',require('./auth'));
+app.use('/api/auth',require('./auth'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
