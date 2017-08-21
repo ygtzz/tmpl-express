@@ -21,7 +21,7 @@ gulp.task('dev:nodemon', function() {
     console.log('nodemon start...');
     nodemon({
         script: base + '/bin/www',
-        ignore: ["gulpfile.js", "node_modules/", "app/public/**/*.*"],
+        // ignore: ["gulpfile.js", "node_modules/", "app/public/**/*.*"],
         env: { 'NODE_ENV': 'development' }
     }).on('start', function() { 
         browserSync.init({ 
