@@ -43,7 +43,7 @@ gulp.task('dev:watch', function() {
         }
     });
 
-    gulp.watch('src/!(route)/*.js', function(event) {
+    gulp.watch('src/!(routes)/*.js', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         if (event.type == 'changed') {
             gulp.src(event.path)
@@ -60,11 +60,10 @@ gulp.task('dev:watch', function() {
         }
     });
 
-    gulp.watch('src/route/*.js', function(event) {
+    gulp.watch('src/routes/*.js', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         if (event.type == 'changed') {
             gulp.src(event.path)
-                .pipe(less())
                 .pipe(gulp.dest(base + '/routes'));
         }
     });

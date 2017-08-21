@@ -2,8 +2,29 @@ var express = require('express');
 var router = express.Router();
 var formidable = require('formidable');
 
+router.post('/login', function(req, res, next) {
+    var params = req.body;
+    var result = {
+        status: 401
+    };
+    if (params.name == 'admin' && params.pwd == '123456') {
+        var token = jwt.sign({
+            data: {
+                id: 'feadmin'
+            }
+        }, tokenSecret, { expiresIn: '6h' });
+        result = {
+            data: {
+                token: token
+            },
+            status: 200
+        }
+    }
+    res.json(result);
+});
+
 //upload demo
-router.post('/upload', function(req, res, next) {
+router.post('/auth/upload', function(req, res, next) {
   var form = new formidable.IncomingForm();
   form.uploadDir="./uploads";
   form.keepExtensions = true;
@@ -17,14 +38,7 @@ router.post('/upload', function(req, res, next) {
   });
 });
 
-router.get('/list', function(req, res, next) {
-    var list = [{name:'zhangsan',age:11},{name:'lisi',age:33}];
-    res.json({
-        data:list
-    });
-});
-
-router.get('/models', function(req, res, next) {
+router.get('/auth/models', function(req, res, next) {
     var list = [{name:'model1',age:11},{name:'model2',age:33}];
     res.json({
         data:list
