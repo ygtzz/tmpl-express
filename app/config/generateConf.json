@@ -1,0 +1,6 @@
+{
+    "additional" : {
+        "freezeTableName" : true,
+        "timestamps" : false
+    }
+  }

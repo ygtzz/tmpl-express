@@ -2,9 +2,9 @@ module.exports = {
     tokenSecret: 'appToken',
     "development": {
         "username": "vendy",
-        "password": "zhang2017",
-        "database": "news",
-        "host": "104.224.158.36",
+        "password": "xxxxxx",
+        "database": "zgdate",
+        "host": "xx.xx.xx.xxx",
         "port": "3306",
         "dialect": "mysql",
         "token": "ec12341392a822ab0ca5c8caa2fa2581"
@@ -18,7 +18,7 @@ module.exports = {
     },
     "production": {
         "username": "root",
-        "password": "504504",
+        "password": "xxxxxx",
         "database": "news",
         "host": "127.0.0.1",
         "port": "3306",
