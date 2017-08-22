@@ -60,13 +60,13 @@ gulp.task('dev:watch', function() {
         }
     });
 
-    gulp.watch('src/routes/*.js', function(event) {
-        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        if (event.type == 'changed') {
-            gulp.src(event.path)
-                .pipe(gulp.dest(base + '/routes'));
-        }
-    });
+    // gulp.watch('src/routes/*.js', function(event) {
+    //     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    //     if (event.type == 'changed') {
+    //         gulp.src(event.path)
+    //             .pipe(gulp.dest(base + '/routes'));
+    //     }
+    // });
 });
 
 gulp.task('build:clean_build',function(){
