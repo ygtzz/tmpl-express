@@ -1,4 +1,4 @@
-# we_express
+# we-express
 
 ## 生成模型 
 ```bash
