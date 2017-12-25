@@ -14,18 +14,20 @@ var base = './app';
 gulp.task('default',['dev:watch','dev:nodemon']);
 gulp.task('build',function (cb) {
     runSequence('build:clean_build', 'build:usemin','build:move_app','build:clean_app',
-    ['build:movejs','build:movecss','build:moveviews'],'build:clean',cb);
+    ['build:movejs','build:movecss','build:moveviews'],'build:clean','build:minifycss','build:copy_pkg',cb);
 });
 
 gulp.task('dev:nodemon', function() {
     console.log('nodemon start...');
     nodemon({
         script: base + '/bin/www',
+        //其他配置见 nodemon.json
+        
         // ignore: ["gulpfile.js", "node_modules/", "app/public/**/*.*"],
-        env: { 'NODE_ENV': 'development' }
+        // env: { 'NODE_ENV': 'development',"PORT": "3002" }
     }).on('start', function() { 
         browserSync.init({ 
-            proxy: 'http://localhost:3000', 
+            proxy: 'http://localhost:3002', 
             files: ["app/public/**/*.*", "app/views/**", "app/routes/**"], 
             port:8080 
         }, function() { 
@@ -77,7 +79,7 @@ gulp.task('build:usemin', function() {
   return gulp.src('./app/views/*.ejs')
     .pipe(usemin({
       assetsDir:'./app/public',
-      css: [ rev() ],
+      css: [rev()],
     //   html: [ htmlmin({ collapseWhitespace: true }) ],
       js: [ uglify(), rev() ]
     }))
@@ -102,6 +104,14 @@ gulp.task('build:movecss', function() {
 
 gulp.task('build:moveviews',function(){
     return gulp.src('./build/*.ejs').pipe(gulp.dest('build/views'));
+});
+
+gulp.task("build:copy_pkg",function(){
+    return gulp.src('./package.json').pipe(gulp.dest('build'));
+});
+
+gulp.task("build:minifycss",function(){
+    return gulp.src('./build/public/css/*.css').pipe(cleanCss()).pipe(gulp.dest('build/public/css'))
 });
 
 gulp.task('build:clean',function(){
